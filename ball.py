@@ -19,7 +19,7 @@ class Ball(pygame.sprite.Sprite):
         # Velocity
         self.velocity = [randint(4,8),randint(-8,8)]
 
-        #fetch rectangle
+        # Fetch rectangle
         self.rect = self.image.get_rect()
 
     # Update
