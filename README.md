@@ -15,9 +15,9 @@ Once installed, open a windows command prompt directly on your desktop and run t
 ## Keys to play
 <br>
 Player 1 : 
-UP : W
+UP : W <br>
 DOWN : S
 <br><br>
 Player 2 :
-UP : K_UP
+UP : K_UP <br>
 DOWN : K_DOWN
