@@ -5,18 +5,18 @@ from ball import Ball
 pygame.init()
 
 
-#colors
+# Colors
 BLACK = (0, 0, 0)
 WHITE = (255, 255, 255)
 
-#window & music
+# Window
 size = (700, 500)
 screen = pygame.display.set_mode(size)
 pygame.display.set_caption("Pong")
 carryOn = True
 clock = pygame.time.Clock()
 
-#paddles
+# Paddles
 paddleA = Paddle(WHITE, 10, 100)
 paddleA.rect.x = 20
 paddleA.rect.y = 200
@@ -24,28 +24,28 @@ paddleB = Paddle(WHITE, 10, 100)
 paddleB.rect.x = 670
 paddleB.rect.y = 200
 
-#ball
+# Ball
 ball = Ball(WHITE, 10, 10)
 ball.rect.x = 345
 ball.rect.y = 195
 
-#spritelist
+# Spritelist
 all_sprites_list = pygame.sprite.Group()
 all_sprites_list.add(paddleA)
 all_sprites_list.add(paddleB)
 all_sprites_list.add(ball)
 
-#score
+# Score
 scoreA = 0
 scoreB = 0
 
-#main
+# Main
 while carryOn:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             carryOn = False
 
-    #paddle movement
+    # Paddle movement
     keys = pygame.key.get_pressed()
     if keys[pygame.K_w]:
         paddleA.moveUp(5)
@@ -58,7 +58,7 @@ while carryOn:
 
     all_sprites_list.update()
 
-    #ball check
+    # Ball check
     if ball.rect.x >= 690:
         scoreA += 1
         ball.velocity[0] = -ball.velocity[0]
@@ -73,21 +73,21 @@ while carryOn:
     if pygame.sprite.collide_mask(ball, paddleA) or pygame.sprite.collide_mask(ball, paddleB):
         ball.bounce()
 
-    #drawing
+    # Drawing
     screen.fill(BLACK)
     pygame.draw.line(screen, WHITE, [349, 0], [349, 500], 5)
     all_sprites_list.draw(screen)
 
-    #score display
+    # Score display
     font = pygame.font.Font(None, 74)
     text = font.render(str(scoreA), 1, WHITE)
     screen.blit(text, (250, 10))
     text = font.render(str(scoreB), 1, WHITE)
     screen.blit(text, (420, 10))
 
-    #screen update
+    # Screen update
     pygame.display.flip()
     clock.tick(60)
 
-#quit
+# Quit
 pygame.quit()    
